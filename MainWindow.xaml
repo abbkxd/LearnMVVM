@@ -17,11 +17,27 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
+        <Grid Grid.Row="0">
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center"
+                        Margin="5">
+                <Button Height="30" Width="40" Content="Add"/>
+                <Button Height="30" Width="40" Content="Delete"/>
+                <Button Height="30" Width="40" Content="Save"/>
+            </StackPanel>
+        </Grid>
+
         <Grid Grid.Row="1" Grid.Column="0">
             <DataGrid
                  ItemsSource="{Binding Items}"
                 SelectedItem="{Binding SelectedItem}"
-                CanUserAddRows="False" CanUserDeleteRows="False">
+                CanUserAddRows="False" CanUserDeleteRows="False"
+                AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="4*"/>
+                    <DataGridTextColumn Header="Serial Number" Binding="{Binding SerialNumber}" Width="4*"/>
+                    <DataGridTextColumn Header="Quantity" Binding="{Binding Quantity}" Width="2*"/>
+                </DataGrid.Columns>
 
             </DataGrid>
         </Grid>
@@ -31,11 +47,16 @@
             <StackPanel Orientation="Vertical"
                         Margin="5">
                 <Label Content="Name" />
-                <TextBox Text="{Binding SelectedItem.Name, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox Text="{Binding SelectedItem.Name,
+                    UpdateSourceTrigger=PropertyChanged}"/>
+                
                 <Label Content="Serial Number" />
-                <TextBox Text="{Binding SelectedItem.SerialNumber, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox Text="{Binding SelectedItem.SerialNumber, 
+                    UpdateSourceTrigger=PropertyChanged}"/>
+                
                 <Label Content="Quantity" />
-                <TextBox Text="{Binding SelectedItem.Quantity, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox Text="{Binding SelectedItem.Quantity, 
+                    UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
         </Grid>
     </Grid>

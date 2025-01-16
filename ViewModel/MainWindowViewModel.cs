@@ -37,7 +37,7 @@ namespace LearnMVVM.ViewModel
             get { return selectedItem; }
             set { selectedItem = value;
                 OnPropertyChanged();
-                    }
+            }
         }
 
 
