@@ -21,11 +21,15 @@
             <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Center"
                         Margin="5">
-                <Button Height="30" Width="40" Content="Add"/>
-                <Button Height="30" Width="40" Content="Delete"/>
-                <Button Height="30" Width="40" Content="Save"/>
+                <Button Height="30" Width="40" Content="Add"
+                        Command="{Binding AddCommand}"/>
+                <Button Height="30" Width="40" Content="Delete"
+                        Command="{Binding DeleteCommand}"/>
+                <Button Height="30" Width="40" Content="Save"
+                        Command="{Binding SaveCommand}"/>
             </StackPanel>
         </Grid>
+        
 
         <Grid Grid.Row="1" Grid.Column="0">
             <DataGrid

@@ -4,30 +4,17 @@ using System.Collections.ObjectModel;
 
 namespace LearnMVVM.ViewModel
 {
-    internal class MainWindowViewModel:ViewModelBase
+    internal class MainWindowViewModel : ViewModelBase
     {
         public ObservableCollection<Item> Items { get; set; }
+
+        public RelayCommand AddCommand => new RelayCommand(execute => AddItem());
+        public RelayCommand DeleteCommand => new RelayCommand(execute => DeleteItem(), canExecute => SelectedItem != null);
+        public RelayCommand SaveCommand => new RelayCommand(execute => SaveItem(), canExecute => CanSave());
 
         public MainWindowViewModel()
         {
             Items = new ObservableCollection<Item>();
-            Items.Add(new Item() {
-                Name = "Item1",
-                SerialNumber="S001",
-                Quantity=1
-            });
-            Items.Add(new Item()
-            {
-                Name = "Item2",
-                SerialNumber = "S002",
-                Quantity = 4
-            });
-            Items.Add(new Item()
-            {
-                Name = "Item3",
-                SerialNumber = "S003",
-                Quantity = 6
-            });
         }
 
         private Item selectedItem;
@@ -39,7 +26,30 @@ namespace LearnMVVM.ViewModel
                 OnPropertyChanged();
             }
         }
+        public void AddItem()
+        {
+            Items.Add(new Item
+            { Name = "S001",
+            SerialNumber = "XXXX",
+            Quantity = 0
+            });
 
+        }
+
+        private void DeleteItem()
+        {
+            Items.Remove(SelectedItem);
+        }
+
+        private void SaveItem()
+        {
+            //Save
+        }
+        private bool CanSave()
+        {
+            return true;
+            //bool value
+        }
 
     }
 }

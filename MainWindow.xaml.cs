@@ -22,6 +22,7 @@ namespace LearnMVVM
             
             InitializeComponent();
             DataContext = new MainWindowViewModel();
+
         }
     }
 }
